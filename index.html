@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./movie.css">
+</head>
+<body>
+<div style="font-family: 'Cherry Bomb One', cursive; color: rgb(159, 220, 16); background-color: rgba(0, 0, 255, 0.39);"><h1 class="text-center container-fluid">Marvel Cinemas</h1></div><br><br>
+    <div class="container form-control text-center mt-5 p-5">
+        <label class="mb-4 fs-1" style="font-family: 'Cherry Bomb One', cursive; color: rgb(159, 220, 16);">Enter the MovieTitle</label>
+        <input type="text" class="form-control mb-4" name="" id="mName" placeholder="Enter the movie">
+        <button type="button" class="btn btn-outline-warning" onclick="moiveDetect()" >search</button>
+    </div>
+    <div id="result" class="container w-75 p-5 mt-2 text-center text-white " style="background-color:  rgba(0, 0, 0, 0.439); border-radius: 20px;">
+</body>
+<script>
+    function moiveDetect(){
+        movieName=mName.value
+        fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=cce7f5b8&t=${movieName}`).then(data=>data.json()).then(cData=>displayData(cData))
+
+    function displayData(dataArray){
+        movietitle=dataArray.title
+        year=dataArray.Year
+        plot=dataArray.Plot
+        ratings=dataArray.Ratings[0].Value
+
+        result.innerHTML=`
+       <div style="color: rgb(159, 220, 16);">
+            <h3>MovieTitle:${movieName}</h3>
+            <h3>Year:${year}</h3>
+            <h3>Plot:${plot}</h3>
+            <h3>Ratings:${ratings}</h3>
+       </div>`
+    }
+}
+</script>
+</html>

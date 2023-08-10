@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+
+body{
+    background-image: url(./image/1318066.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container{
+    background-color: rgba(1, 18, 26, 0.101);
+}
